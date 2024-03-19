@@ -13,8 +13,6 @@ import userReducer from './reducer/userReducer';
 import Header from './components/Header/Header';
 import Login from './components/Login';
 import Register from './components/Register';
-import ForgotPassword from './components/forgotPassword/ForgotPassword';
-import ResetPassword from './components/forgotPassword/ResetPassword';
 import axios from './Axios/axios.js';
 function App() {
   const token = JSON.parse(localStorage.getItem("authToken"));
@@ -22,17 +20,13 @@ function App() {
   const [userToken, tokenDispatch] = useReducer(tokenReducer, token)
   const [user, userDispatch] = useReducer(userReducer, {})
   useEffect(() => {
-    console.log("App.js");
     const fetchUser = async () => {
       try {
-        console.log("fetchUser");
         const res = await axios.get("/user/getUser",{
           headers: {
             Authorization: `Bearer ${userToken}`
           }
         })
-        //tokenDispatch({type: "SET_TOKEN", payload: res.token})
-        console.log("res.data: ", res.data);
         userDispatch({type: "SET_USER", payload:res.data.user})
       } catch (error) {
         console.log(error);
@@ -73,8 +67,6 @@ function App() {
               </Route>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              <Route path="/forgotPassword" element={<ForgotPassword />} />
-              <Route path="/resetPassword" element={<ResetPassword />} />
             </Route>
           </Routes>
         </TaskContext.Provider>

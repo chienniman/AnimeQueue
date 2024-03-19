@@ -1,16 +1,13 @@
 import userModel from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import validator from "validator";
 
-//create token
 const createToken = (id) => {
     return jwt.sign({id}, process.env.JWT_SECRET, {
         expiresIn: 3 * 24 * 60 * 60
     })
 }
 
-//login user
 const loginUser = async (req,res) => {
     const {email, password} = req.body;
     try{
@@ -34,11 +31,9 @@ const loginUser = async (req,res) => {
     }
 }
 
-//register user
 const registerUser = async (req,res) => {
     const {name, email, password} = req.body;
     try{
-        //check if user already exists
         const exists = await userModel.findOne({email})
         if(exists){
             return res.status(400).json({message: "User already exists"})
@@ -48,9 +43,6 @@ const registerUser = async (req,res) => {
         }
         if(!validator.isEmail(email)){
             return res.status(400).json({message: "Please enter a valid email"})
-        }
-        if(!validator.isStrongPassword(password)){
-            return res.status(400).json({message: "Please enter a strong password"})
         }
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt)
@@ -65,7 +57,6 @@ const registerUser = async (req,res) => {
     }
 }
 
-//get user info
 const getUser = async (req,res) => {
     const id = req.user.id
     try{

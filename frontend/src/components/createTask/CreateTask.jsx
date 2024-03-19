@@ -9,17 +9,14 @@ function CreateTask() {
     const {userToken} = useContext(TokenContext)
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
-    // const [toast, setToast] = useState();
     const handleAdd = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("/task/addTask", {title, description},{
+            await axios.post("/task/addTask", {title, description},{
               headers: {
                 Authorization: `Bearer ${userToken}`
               }
             })
-            //setToast(res.data)
-            // showToast();
           } catch (error) {
             console.log(error);
           }
@@ -31,16 +28,6 @@ function CreateTask() {
         setTitle("")
         setDescription("")
     }
-
-    // const showToast = () => {
-    //     const toast = document.getElementById('toast');
-    //     toast.style.display = "block"
-    //     setTimeout(hideToast,2000)
-    // }
-    // const hideToast = () => {
-    //     const toast = document.getElementById('toast');
-    //     toast.style.display = "none"
-    // }
     return (
         <div className="addContainer md:w-1/3 md:mx-auto mx-3 mt-3 flex justify-center">
             <div className='w-11/12'>
@@ -75,9 +62,6 @@ function CreateTask() {
                         >Add</button>
                     </div>
                 </form>
-                <div className="toast bg-green-600 text-white p-3 rounded-xl shadow-2xl text-center absolute bottom-4 left-1/2 -translate-x-1/2" id='toast'>
-                    <p>This is test</p>
-                </div>
             </div>
         </div>
     );
