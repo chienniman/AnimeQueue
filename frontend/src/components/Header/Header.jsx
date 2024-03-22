@@ -15,7 +15,7 @@ function Header() {
         <div>
             <nav className='header bg-slate-200 flex justify-between items-center'>
                 <div className="logo w-1/4 text-center">
-                    <NavLink to="/">Todo App</NavLink>
+                    <NavLink to="/">AnimeQueue</NavLink>
                 </div>
                 <div className='flex justify-between'>
                     {
