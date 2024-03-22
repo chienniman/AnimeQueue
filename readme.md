@@ -1,7 +1,7 @@
 # Installation
 Run the following command to clone the repository
 ```
-git clone https://github.com/alokyadav1/mern-todo-app.git
+git clone https://github.com/chienniman/AnimeQueue.git
 ```
 Go to ```frontend``` and ```backend``` directory to install packages
 ```
@@ -16,11 +16,9 @@ npm install
 Create ```.env``` file inside ```backend``` directory and copy the following code
 
 ```
-MONGO_URI=Your mongodb URI
-GMAIL_USERNAME=your gmail address 
-GMAIL_PASSWORD=password created inside 'App Password' section under google accounts setting
+MONGO_URI=mongodb URI
 PORT=8000
-JWT_SECRET=a random secret key eg. thisisasecretkey
+JWT_SECRET=secret key
 ```
 # Run the App
 Go to ```backend``` and ```frontend``` directory and start the server
@@ -33,6 +31,6 @@ cd frontend
 npm start
 ```
 # Live Preview
-Check live preview here [https://todo-app-b96a5.web.app/](https://todo-app-b96a5.web.app/)
+Not yet
 
 
