@@ -39,7 +39,6 @@ function App() {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        console.log("fetchTasks");
         const res = await axios.get("/task/getTask", {
           headers: {
             Authorization: `Bearer ${userToken}`
